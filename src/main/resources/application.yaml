@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${USER_SERVICE_POSTGRES_HOST}:${USER_SERVICE_POSTGRES_PORT}/${USER_SERVICE_POSTGRES_DB}
+    username: ${USER_SERVICE_POSTGRES_USER}
+    password: ${USER_SERVICE_POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  application:
+    name: authorization-service
+
+
+site:
+  domain:
+    url: http://127.0.0.1:${server.port}
+server:
+  port: 9000
+
+
+secret:
+  key: ${SECRET_KEY}
+  ttl:
+    access: 900000 # 15 min
+    refresh: 10080000 # 7 days
+
+
