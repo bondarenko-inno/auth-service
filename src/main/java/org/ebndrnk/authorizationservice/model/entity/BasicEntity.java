@@ -19,6 +19,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
+
+/**
+ * Abstract base entity with common properties for all entities.
+ * <p>
+ * Includes ID, versioning for optimistic locking, creation and update timestamps.
+ */
 @MappedSuperclass
 @Getter
 @Setter

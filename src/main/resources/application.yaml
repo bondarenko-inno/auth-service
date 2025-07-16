@@ -10,7 +10,9 @@ spring:
 
 site:
   domain:
-    url: http://127.0.0.1:${server.port}
+    url: ${environment.host}:${server.port}
+
+
 server:
   port: 9000
 
@@ -18,7 +20,9 @@ server:
 secret:
   key: ${SECRET_KEY}
   ttl:
-    access: 900000 # 15 min
+    access: 18000 # 15 min
     refresh: 10080000 # 7 days
 
 
+environment:
+  host: http://127.0.0.1
