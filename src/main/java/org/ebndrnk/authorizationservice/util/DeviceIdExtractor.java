@@ -1,20 +1,21 @@
 package org.ebndrnk.authorizationservice.util;
 
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.RequestScope;
 
 @Slf4j
 @Component
+@RequestScope(proxyMode = ScopedProxyMode.TARGET_CLASS)
+@RequiredArgsConstructor
 public class DeviceIdExtractor {
 
     private static final String DEVICE_ID_HEADER = "User-Agent";
 
     private final HttpServletRequest request;
-
-    public DeviceIdExtractor(HttpServletRequest request) {
-        this.request = request;
-    }
 
     /**
      * Extracts the device ID from the HTTP request header.

@@ -1,6 +1,6 @@
 package org.ebndrnk.authorizationservice.service.logout;
 
-import jakarta.servlet.http.HttpServletRequest;
+import org.ebndrnk.authorizationservice.model.dto.JwtRequest;
 
 /**
  * Service interface for user logout operations.
@@ -12,5 +12,5 @@ public interface LogoutService {
      *
      * @param request the HTTP servlet request containing user authentication details (e.g., tokens)
      */
-    void logout(HttpServletRequest request);
+    void logout(JwtRequest request);
 }

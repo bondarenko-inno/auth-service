@@ -1,5 +1,6 @@
 package org.ebndrnk.authorizationservice.config;
 
+import jakarta.annotation.Nullable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -22,7 +23,8 @@ public class CorsConfig {
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
-            public void addCorsMappings(CorsRegistry registry) {
+            public void addCorsMappings(@Nullable CorsRegistry registry) {
+                assert registry != null;
                 registry.addMapping("/**")
                         .allowedOrigins("http://localhost:9000")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")

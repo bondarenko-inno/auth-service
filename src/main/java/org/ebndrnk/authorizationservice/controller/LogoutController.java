@@ -4,8 +4,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.ebndrnk.authorizationservice.model.dto.JwtRequest;
 import org.ebndrnk.authorizationservice.service.logout.LogoutService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,12 +37,12 @@ public class LogoutController {
     @PostMapping
     @Operation(
             summary = "Logout user",
-            description = "Deletes all refresh tokens for the current user and logs them out.",
+            description = "Deletes refresh tokens for the current user and current device and logs them out.",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Logout successful")
             }
     )
-    public ResponseEntity<Void> logout(HttpServletRequest request) {
+    public ResponseEntity<Void> logout(@Valid JwtRequest request) {
         logoutService.logout(request);
         return ResponseEntity.ok().build();
     }
