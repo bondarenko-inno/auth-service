@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: user_credentials.sql
+      relativeToChangelogFile: true
+  - include:
+      file: refresh_tokens.sql
+      relativeToChangelogFile: true

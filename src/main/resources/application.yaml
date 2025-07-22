@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${AUTH_SERVICE_POSTGRES_HOST}:${AUTH_SERVICE_POSTGRES_PORT}/${AUTH_SERVICE_POSTGRES_DB}
+    username: ${AUTH_SERVICE_POSTGRES_USER}
+    password: ${AUTH_SERVICE_POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  application:
+    name: authorization-service
+  kafka:
+    bootstrap-servers: ${environment.kafka.address}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: auth-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: '*'
+
+
+site:
+  domain:
+    url: ${environment.host}:${server.port}
+
+
+server:
+  port: 9000
+
+
+secret:
+  key: ${SECRET_KEY}
+  ttl:
+    access: 9000000 # 15 min
+    refresh: 10080000 # 7 days
+
+
+environment:
+  host: http://127.0.0.1
+  kafka:
+    address: localhost:9092
