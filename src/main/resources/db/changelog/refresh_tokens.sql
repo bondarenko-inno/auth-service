@@ -23,4 +23,3 @@ COMMENT ON COLUMN refresh_tokens.expires_at IS 'Refresh token expiration time';
 COMMENT ON COLUMN refresh_tokens.token_hash IS 'Hashed refresh token';
 COMMENT ON COLUMN refresh_tokens.user_id IS 'Foreign key to user_credentials';
 
-ALTER TABLE refresh_tokens OWNER TO "auth-postgres";

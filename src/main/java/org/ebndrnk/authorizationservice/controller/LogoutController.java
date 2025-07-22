@@ -10,6 +10,7 @@ import org.ebndrnk.authorizationservice.model.dto.JwtRequest;
 import org.ebndrnk.authorizationservice.service.logout.LogoutService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,7 +43,7 @@ public class LogoutController {
                     @ApiResponse(responseCode = "200", description = "Logout successful")
             }
     )
-    public ResponseEntity<Void> logout(@Valid JwtRequest request) {
+    public ResponseEntity<Void> logout(@Valid @RequestBody JwtRequest request) {
         logoutService.logout(request);
         return ResponseEntity.ok().build();
     }

@@ -51,7 +51,7 @@ public class AuthenticationController {
                     )
             }
     )
-    public ResponseEntity<JwtResponse> register(
+    public ResponseEntity<JwtResponse> authenticate(
             @RequestBody AuthenticationRequest authenticationRequest
     ) {
         return ResponseEntity.ok(authenticationService.authenticate(authenticationRequest));

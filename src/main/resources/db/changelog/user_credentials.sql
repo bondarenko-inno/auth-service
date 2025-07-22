@@ -20,4 +20,3 @@ COMMENT ON COLUMN user_credentials.email IS 'User email, used as login. Unique.'
 COMMENT ON COLUMN user_credentials.password_hash IS 'User password hashed.';
 COMMENT ON COLUMN user_credentials.role IS 'User role, e.g., ROLE_USER, ROLE_ADMIN.';
 
-ALTER TABLE user_credentials OWNER TO "auth-postgres";
