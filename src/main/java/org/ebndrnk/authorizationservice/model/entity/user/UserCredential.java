@@ -1,15 +1,19 @@
 package org.ebndrnk.authorizationservice.model.entity.user;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.ebndrnk.authorizationservice.model.entity.BasicEntity;
-import org.ebndrnk.authorizationservice.model.entity.user.token.RefreshToken;
+import org.ebndrnk.authorizationservice.model.entity.token.RefreshToken;
+import org.ebndrnk.common.common.entity.BasicEntity;
 import org.hibernate.annotations.Comment;
 
 import java.util.ArrayList;

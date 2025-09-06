@@ -22,6 +22,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
 
   kafka:
+    container_name: kafka-auth
     image: confluentinc/cp-kafka:7.5.0
     depends_on:
       - zookeeper
@@ -44,16 +45,15 @@ services:
   auth-service:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-auth
     container_name: auth-service
     ports:
       - "9000:9000"
     environment:
-      - AUTH_SERVICE_POSTGRES_HOST=${AUTH_SERVICE_POSTGRES_HOST}
-      - AUTH_SERVICE_POSTGRES_PORT=${AUTH_SERVICE_POSTGRES_PORT}
       - AUTH_SERVICE_POSTGRES_DB=${AUTH_SERVICE_POSTGRES_DB}
       - AUTH_SERVICE_POSTGRES_USER=${AUTH_SERVICE_POSTGRES_USER}
       - AUTH_SERVICE_POSTGRES_PASSWORD=${AUTH_SERVICE_POSTGRES_PASSWORD}
+      - SPRING_PROFILES_ACTIVE=docker
       - SECRET_KEY=${SECRET_KEY}
     depends_on:
       - auth-service-db

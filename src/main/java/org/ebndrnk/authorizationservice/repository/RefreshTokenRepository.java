@@ -1,7 +1,7 @@
 package org.ebndrnk.authorizationservice.repository;
 
 import org.ebndrnk.authorizationservice.model.entity.user.UserCredential;
-import org.ebndrnk.authorizationservice.model.entity.user.token.RefreshToken;
+import org.ebndrnk.authorizationservice.model.entity.token.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

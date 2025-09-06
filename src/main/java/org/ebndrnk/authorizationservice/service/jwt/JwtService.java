@@ -10,13 +10,13 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.ebndrnk.authorizationservice.exception.dto.token.InvalidTokenException;
-import org.ebndrnk.authorizationservice.exception.dto.token.TokenExpiredException;
-import org.ebndrnk.authorizationservice.exception.dto.token.TokenParsingException;
-import org.ebndrnk.authorizationservice.exception.dto.user.UserNotFoundException;
+import org.ebndrnk.authorizationservice.exception.token.InvalidTokenException;
+import org.ebndrnk.authorizationservice.exception.token.TokenExpiredException;
+import org.ebndrnk.authorizationservice.exception.token.TokenParsingException;
+import org.ebndrnk.authorizationservice.exception.user.UserNotFoundException;
 import org.ebndrnk.authorizationservice.model.dto.JwtResponse;
 import org.ebndrnk.authorizationservice.model.entity.user.UserCredential;
-import org.ebndrnk.authorizationservice.model.entity.user.token.RefreshToken;
+import org.ebndrnk.authorizationservice.model.entity.token.RefreshToken;
 import org.ebndrnk.authorizationservice.repository.RefreshTokenRepository;
 import org.ebndrnk.authorizationservice.repository.UserCredentialRepository;
 import org.ebndrnk.authorizationservice.util.DeviceIdExtractor;
@@ -168,7 +168,6 @@ public class JwtService {
         String email = extractEmail(claims);
         String role = extractRole(claims);
 
-        // Delete old token to prevent reuse
         refreshTokenRepository.delete(tokenEntity);
         log.info("Deleted old refresh token for user {}", email);
 

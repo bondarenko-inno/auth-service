@@ -1,13 +1,13 @@
 package org.ebndrnk.authorizationservice.unit;
 
 import io.jsonwebtoken.Claims;
-import org.ebndrnk.authorizationservice.exception.dto.token.InvalidTokenException;
-import org.ebndrnk.authorizationservice.exception.dto.token.TokenExpiredException;
-import org.ebndrnk.authorizationservice.exception.dto.user.UserNotFoundException;
+import org.ebndrnk.authorizationservice.exception.token.InvalidTokenException;
+import org.ebndrnk.authorizationservice.exception.token.TokenExpiredException;
+import org.ebndrnk.authorizationservice.exception.user.UserNotFoundException;
 import org.ebndrnk.authorizationservice.model.dto.JwtResponse;
 import org.ebndrnk.authorizationservice.model.entity.user.UserCredential;
 import org.ebndrnk.authorizationservice.model.entity.user.UserRole;
-import org.ebndrnk.authorizationservice.model.entity.user.token.RefreshToken;
+import org.ebndrnk.authorizationservice.model.entity.token.RefreshToken;
 import org.ebndrnk.authorizationservice.repository.RefreshTokenRepository;
 import org.ebndrnk.authorizationservice.repository.UserCredentialRepository;
 import org.ebndrnk.authorizationservice.service.jwt.JwtService;

@@ -3,7 +3,7 @@ package org.ebndrnk.authorizationservice.service.registration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.ebndrnk.authorizationservice.kafka.UserEventPublisher;
-import org.ebndrnk.authorizationservice.exception.dto.user.DuplicateEmailException;
+import org.ebndrnk.authorizationservice.exception.user.DuplicateEmailException;
 import org.ebndrnk.authorizationservice.model.dto.JwtResponse;
 import org.ebndrnk.authorizationservice.model.dto.RegistrationRequest;
 import org.ebndrnk.authorizationservice.kafka.dto.UserCreatedEvent;

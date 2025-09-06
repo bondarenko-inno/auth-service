@@ -1,6 +1,6 @@
 package org.ebndrnk.authorizationservice.unit;
 
-import org.ebndrnk.authorizationservice.exception.dto.token.InvalidTokenException;
+import org.ebndrnk.authorizationservice.exception.token.InvalidTokenException;
 import org.ebndrnk.authorizationservice.model.dto.JwtRequest;
 import org.ebndrnk.authorizationservice.model.entity.user.UserCredential;
 import org.ebndrnk.authorizationservice.repository.RefreshTokenRepository;

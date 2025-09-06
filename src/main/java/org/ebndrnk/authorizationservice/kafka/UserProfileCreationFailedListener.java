@@ -2,7 +2,7 @@ package org.ebndrnk.authorizationservice.kafka;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.ebndrnk.authorizationservice.exception.dto.user.UserNotFoundException;
+import org.ebndrnk.authorizationservice.exception.user.UserNotFoundException;
 import org.ebndrnk.authorizationservice.kafka.dto.UserProfileCreationFailedEvent;
 import org.ebndrnk.authorizationservice.service.UserCredentialService;
 import org.springframework.kafka.KafkaException;

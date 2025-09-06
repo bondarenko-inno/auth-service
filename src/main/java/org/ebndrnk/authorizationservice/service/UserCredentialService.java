@@ -1,7 +1,7 @@
 package org.ebndrnk.authorizationservice.service;
 
 import lombok.RequiredArgsConstructor;
-import org.ebndrnk.authorizationservice.exception.dto.user.UserNotFoundException;
+import org.ebndrnk.authorizationservice.exception.user.UserNotFoundException;
 import org.ebndrnk.authorizationservice.repository.UserCredentialRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
