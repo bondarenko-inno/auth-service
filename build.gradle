@@ -50,8 +50,9 @@ dependencies {
     testImplementation("org.testcontainers:kafka")
     testImplementation 'org.springframework.kafka:spring-kafka-test'
 
-    implementation 'com.github.bondarenko-inno:common-lib:2.0.0'
+    implementation 'com.github.bondarenko-inno:common-lib:2.0.2'
 
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 
 
