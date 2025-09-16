@@ -32,7 +32,7 @@ server:
 secret:
   key: ${SECRET_KEY}
   ttl:
-    access: 9000000 # 15 min
+    access: 90000000 # 15 min
     refresh: 10080000 # 7 days
 
 

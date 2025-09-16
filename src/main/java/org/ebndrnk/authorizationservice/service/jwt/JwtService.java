@@ -8,6 +8,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.ebndrnk.authorizationservice.exception.token.InvalidTokenException;
@@ -22,6 +23,7 @@ import org.ebndrnk.authorizationservice.repository.UserCredentialRepository;
 import org.ebndrnk.authorizationservice.util.DeviceIdExtractor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 
 import java.security.Key;
 import java.security.MessageDigest;
@@ -152,14 +154,15 @@ public class JwtService {
      * @param refreshToken the current refresh token string
      * @return new {@link JwtResponse} containing fresh access and refresh tokens
      */
-    public JwtResponse refreshTokens(String refreshToken) {
+    @Transactional
+    public synchronized JwtResponse refreshTokens(String refreshToken) {
         Claims claims = parseToken(refreshToken);
 
         assertIsRefreshToken(claims);
         assertNotExpired(claims);
 
         String hash = hashToken(refreshToken);
-        RefreshToken tokenEntity = refreshTokenRepository.findByTokenHash(hash)
+        RefreshToken tokenEntity = refreshTokenRepository.findByTokenHashForUpdate(hash)
                 .orElseThrow(() -> {
                     log.warn("Refresh token not found or revoked: {}", hash);
                     return new InvalidTokenException("Refresh token not found or already revoked.");

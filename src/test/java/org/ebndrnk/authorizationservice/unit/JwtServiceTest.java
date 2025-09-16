@@ -94,7 +94,7 @@ class JwtServiceTest {
         userCredential.setRole(UserRole.ROLE_USER);
         tokenEntity.setUser(new UserCredential());
 
-        when(refreshTokenRepository.findByTokenHash(tokenHash)).thenReturn(Optional.of(tokenEntity));
+        when(refreshTokenRepository.findByTokenHashForUpdate(tokenHash)).thenReturn(Optional.of(tokenEntity));
         when(userCredentialRepository.findByEmail(email)).thenReturn(Optional.of(tokenEntity.getUser()));
         when(deviceIdExtractor.extract()).thenReturn("device-1");
 
@@ -109,7 +109,7 @@ class JwtServiceTest {
     void testRefreshTokens_invalidHash() {
         String token = jwtService.generateRefreshToken("test@example.com", "USER");
         String hash = ReflectionTestUtils.invokeMethod(jwtService, "hashToken", token);
-        when(refreshTokenRepository.findByTokenHash(hash)).thenReturn(Optional.empty());
+        when(refreshTokenRepository.findByTokenHashForUpdate(hash)).thenReturn(Optional.empty());
 
         assertThrows(InvalidTokenException.class, () -> jwtService.refreshTokens(token));
     }
