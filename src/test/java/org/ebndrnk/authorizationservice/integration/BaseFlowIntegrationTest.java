@@ -6,7 +6,7 @@ import org.ebndrnk.authorizationservice.model.dto.JwtRequest;
 import org.ebndrnk.authorizationservice.model.dto.JwtResponse;
 import org.ebndrnk.authorizationservice.model.dto.RegistrationRequest;
 import org.ebndrnk.authorizationservice.model.entity.user.UserCredential;
-import org.ebndrnk.authorizationservice.model.entity.user.token.RefreshToken;
+import org.ebndrnk.authorizationservice.model.entity.token.RefreshToken;
 import org.ebndrnk.authorizationservice.repository.RefreshTokenRepository;
 import org.ebndrnk.authorizationservice.repository.UserCredentialRepository;
 import org.junit.jupiter.api.BeforeEach;

@@ -20,9 +20,6 @@ configurations {
     }
 }
 
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
@@ -53,6 +50,9 @@ dependencies {
     testImplementation("org.testcontainers:kafka")
     testImplementation 'org.springframework.kafka:spring-kafka-test'
 
+    implementation 'com.github.bondarenko-inno:common-lib:2.0.7'
+
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 
 

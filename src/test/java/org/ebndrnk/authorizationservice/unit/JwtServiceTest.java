@@ -1,13 +1,13 @@
 package org.ebndrnk.authorizationservice.unit;
 
 import io.jsonwebtoken.Claims;
-import org.ebndrnk.authorizationservice.exception.dto.token.InvalidTokenException;
-import org.ebndrnk.authorizationservice.exception.dto.token.TokenExpiredException;
-import org.ebndrnk.authorizationservice.exception.dto.user.UserNotFoundException;
+import org.ebndrnk.authorizationservice.exception.token.InvalidTokenException;
+import org.ebndrnk.authorizationservice.exception.token.TokenExpiredException;
+import org.ebndrnk.authorizationservice.exception.user.UserNotFoundException;
 import org.ebndrnk.authorizationservice.model.dto.JwtResponse;
 import org.ebndrnk.authorizationservice.model.entity.user.UserCredential;
 import org.ebndrnk.authorizationservice.model.entity.user.UserRole;
-import org.ebndrnk.authorizationservice.model.entity.user.token.RefreshToken;
+import org.ebndrnk.authorizationservice.model.entity.token.RefreshToken;
 import org.ebndrnk.authorizationservice.repository.RefreshTokenRepository;
 import org.ebndrnk.authorizationservice.repository.UserCredentialRepository;
 import org.ebndrnk.authorizationservice.service.jwt.JwtService;
@@ -94,7 +94,7 @@ class JwtServiceTest {
         userCredential.setRole(UserRole.ROLE_USER);
         tokenEntity.setUser(new UserCredential());
 
-        when(refreshTokenRepository.findByTokenHash(tokenHash)).thenReturn(Optional.of(tokenEntity));
+        when(refreshTokenRepository.findByTokenHashForUpdate(tokenHash)).thenReturn(Optional.of(tokenEntity));
         when(userCredentialRepository.findByEmail(email)).thenReturn(Optional.of(tokenEntity.getUser()));
         when(deviceIdExtractor.extract()).thenReturn("device-1");
 
@@ -109,7 +109,7 @@ class JwtServiceTest {
     void testRefreshTokens_invalidHash() {
         String token = jwtService.generateRefreshToken("test@example.com", "USER");
         String hash = ReflectionTestUtils.invokeMethod(jwtService, "hashToken", token);
-        when(refreshTokenRepository.findByTokenHash(hash)).thenReturn(Optional.empty());
+        when(refreshTokenRepository.findByTokenHashForUpdate(hash)).thenReturn(Optional.empty());
 
         assertThrows(InvalidTokenException.class, () -> jwtService.refreshTokens(token));
     }

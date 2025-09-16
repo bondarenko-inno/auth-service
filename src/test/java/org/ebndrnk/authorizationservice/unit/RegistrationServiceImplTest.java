@@ -1,6 +1,6 @@
 package org.ebndrnk.authorizationservice.unit;
 
-import org.ebndrnk.authorizationservice.exception.dto.user.DuplicateEmailException;
+import org.ebndrnk.authorizationservice.exception.user.DuplicateEmailException;
 import org.ebndrnk.authorizationservice.kafka.UserEventPublisher;
 import org.ebndrnk.authorizationservice.kafka.dto.UserCreatedEvent;
 import org.ebndrnk.authorizationservice.model.dto.JwtResponse;

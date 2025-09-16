@@ -53,14 +53,14 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
 
+      - name: Compile project
+        run: ./gradlew build
+
       - name: Run SonarCloud analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew sonar \
-          -Dsonar.projectKey=bondarenko-inno_auth-service \
-          -Dsonar.organization=bondarenko-inno \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=$SONAR_TOKEN
+        run: ./gradlew sonar -Dsonar.token=$SONAR_TOKEN
+
 
   docker:
     name: Docker Build & Push

@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${AUTH_SERVICE_POSTGRES_HOST}:${AUTH_SERVICE_POSTGRES_PORT}/${AUTH_SERVICE_POSTGRES_DB}
+    username: ${AUTH_SERVICE_POSTGRES_USER}
+    password: ${AUTH_SERVICE_POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+environment:
+  host: http://127.0.0.1
+  kafka:
+    address: ${AUTH_SERVICE_KAFKA_HOST}:${AUTH_SERVICE_KAFKA_PORT}

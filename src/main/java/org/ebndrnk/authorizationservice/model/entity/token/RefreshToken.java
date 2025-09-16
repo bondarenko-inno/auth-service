@@ -1,10 +1,10 @@
-package org.ebndrnk.authorizationservice.model.entity.user.token;
+package org.ebndrnk.authorizationservice.model.entity.token;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.ebndrnk.authorizationservice.model.entity.BasicEntity;
 import org.ebndrnk.authorizationservice.model.entity.user.UserCredential;
+import org.ebndrnk.common.common.entity.BasicEntity;
 import org.hibernate.annotations.Comment;
 
 import java.util.Date;

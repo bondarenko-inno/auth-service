@@ -1,8 +1,8 @@
 package org.ebndrnk.authorizationservice.unit;
 
-import org.ebndrnk.authorizationservice.exception.dto.token.TokenGenerationException;
-import org.ebndrnk.authorizationservice.exception.dto.user.InvalidCredentialsException;
-import org.ebndrnk.authorizationservice.exception.dto.user.UserNotFoundException;
+import org.ebndrnk.authorizationservice.exception.token.TokenGenerationException;
+import org.ebndrnk.authorizationservice.exception.user.InvalidCredentialsException;
+import org.ebndrnk.authorizationservice.exception.user.UserNotFoundException;
 import org.ebndrnk.authorizationservice.model.dto.AuthenticationRequest;
 import org.ebndrnk.authorizationservice.model.dto.JwtResponse;
 import org.ebndrnk.authorizationservice.model.entity.user.UserCredential;

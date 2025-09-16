@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://${AUTH_SERVICE_POSTGRES_HOST}:${AUTH_SERVICE_POSTGRES_PORT}/${AUTH_SERVICE_POSTGRES_DB}
+    url: jdbc:postgresql://${AUTH_SERVICE_POSTGRES_HOST:localhost}:${AUTH_SERVICE_POSTGRES_PORT:5432}/${AUTH_SERVICE_POSTGRES_DB}
     username: ${AUTH_SERVICE_POSTGRES_USER}
     password: ${AUTH_SERVICE_POSTGRES_PASSWORD}
     driver-class-name: org.postgresql.Driver
@@ -32,7 +32,7 @@ server:
 secret:
   key: ${SECRET_KEY}
   ttl:
-    access: 9000000 # 15 min
+    access: 90000000 # 15 min
     refresh: 10080000 # 7 days
 
 
@@ -40,3 +40,13 @@ environment:
   host: http://127.0.0.1
   kafka:
     address: localhost:9092
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
